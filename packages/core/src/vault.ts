@@ -48,6 +48,7 @@ export async function pathToNode(
     parentPath: await nearestParentPath(vaultRoot, absDir),
     frontmatter: page.frontmatter,
     body: page.body,
+    tags: page.tags,
   };
 
   return { node, idWasGenerated };

@@ -35,6 +35,7 @@ export interface PageNode {
   parentPath: string | null;
   frontmatter: Frontmatter;
   body: string;
+  tags: string[];
 }
 
 export interface ResolvedLink {

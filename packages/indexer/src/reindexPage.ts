@@ -14,15 +14,19 @@ export async function reindexPage(
   if (!parsed) return "skipped";
 
   const node = parsed.node;
-  const raw = await readFile(join(absDir, "index.md"), "utf8");
+  const absFile = join(absDir, "index.md");
+  let raw = await readFile(absFile, "utf8");
 
-  if (!raw.includes(`id: ${node.id}`)) await writeIdBack(vaultRoot, node);
+  if (!raw.includes(`id: ${node.id}`)) {
+    await writeIdBack(vaultRoot, node);
+    raw = await readFile(absFile, "utf8");
+  }
 
   await upsertPage(sql, {
     id: node.id,
     path: node.path,
     title: node.title,
-    tags: node.frontmatter.tags,
+    tags: node.tags,
     aliases: node.frontmatter.aliases,
     createdAt: node.frontmatter.created,
     updatedAt: node.frontmatter.updated,

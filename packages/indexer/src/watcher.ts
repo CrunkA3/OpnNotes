@@ -1,4 +1,4 @@
-import { dirname, relative, resolve } from "node:path";
+import { dirname, resolve } from "node:path";
 import type { Sql } from "@opnnotes/db";
 import chokidar from "chokidar";
 import { reindexPage, removePageByPath } from "./reindexPage.js";
@@ -41,7 +41,7 @@ export function createWatcher(
   watcher.on("change", (rel) =>
     schedule(rel, () => reindexPage(sql, vaultRoot, resolve(vaultRoot, dirname(rel)), nowStr(now)).then(() => {})),
   );
-  watcher.on("unlink", (rel) => schedule(rel, () => removePageByPath(sql, relative(".", dirname(rel)))));
+  watcher.on("unlink", (rel) => schedule(rel, () => removePageByPath(sql, dirname(rel))));
 
   const ready = new Promise<void>((res) => watcher.on("ready", () => res()));
 

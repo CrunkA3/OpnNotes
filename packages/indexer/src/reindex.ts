@@ -18,16 +18,17 @@ export async function reindexVault(
 
   for (const node of nodes) {
     const abs = join(vaultRoot, ...node.path.split(posix.sep), "index.md");
-    const raw = await readFile(abs, "utf8");
+    let raw = await readFile(abs, "utf8");
     if (!raw.includes(`id: ${node.id}`)) {
       await writeIdBack(vaultRoot, node);
+      raw = await readFile(abs, "utf8");
     }
 
     await upsertPage(sql, {
       id: node.id,
       path: node.path,
       title: node.title,
-      tags: node.frontmatter.tags,
+      tags: node.tags,
       aliases: node.frontmatter.aliases,
       createdAt: node.frontmatter.created,
       updatedAt: node.frontmatter.updated,
