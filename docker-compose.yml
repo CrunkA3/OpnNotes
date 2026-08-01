@@ -10,8 +10,6 @@ services:
     environment:
       DATABASE_URL: postgresql://opnnotes:${POSTGRES_PASSWORD:-opnnotes}@postgres:5432/opnnotes
       NODE_ENV: production
-    ports:
-      - "3000:3000"
 
   tests:
     build:
