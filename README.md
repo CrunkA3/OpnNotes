@@ -57,9 +57,18 @@ Start PostgreSQL (with pgvector) via Docker Compose:
 docker compose up -d
 ```
 
-Connection string (Compose defaults):
+Copy the example environment file and set your password:
 
-Set `DATABASE_URL` to: `postgresql://opnnotes:opnnotes@localhost:5432/opnnotes`
+```bash
+cp .env.example .env
+# edit .env and set POSTGRES_PASSWORD to a value of your choice
+```
+
+Connection string (update `changeme` to match your `POSTGRES_PASSWORD`):
+
+```
+DATABASE_URL=postgresql://opnnotes:changeme@localhost:5432/opnnotes
+```
 
 Run all tests:
 
