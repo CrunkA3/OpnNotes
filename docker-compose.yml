@@ -1,4 +1,14 @@
 services:
+  tests:
+    build:
+      context: .
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://opnnotes:${POSTGRES_PASSWORD:-opnnotes}@postgres:5432/opnnotes
+
   postgres:
     image: pgvector/pgvector:pg16
     restart: unless-stopped
