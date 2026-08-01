@@ -13,7 +13,6 @@ RUN pnpm install --frozen-lockfile
 
 FROM deps AS build
 COPY packages ./packages
-RUN pnpm build
 
 FROM node:20.19.2-alpine AS runtime
 WORKDIR /app
