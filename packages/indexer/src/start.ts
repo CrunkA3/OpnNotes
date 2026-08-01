@@ -1,3 +1,4 @@
+import { mkdir } from "node:fs/promises";
 import { createClient, migrate } from "@opnnotes/db";
 import { reindexVault } from "./reindex.js";
 import { createWatcher } from "./watcher.js";
@@ -25,6 +26,7 @@ const shutdown = async () => {
 };
 
 try {
+  await mkdir(vaultRoot, { recursive: true });
   await migrate(sql);
   await reindexVault(sql, vaultRoot, new Date().toISOString());
 
