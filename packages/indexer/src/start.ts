@@ -26,7 +26,12 @@ const shutdown = async () => {
 };
 
 try {
-  await mkdir(vaultRoot, { recursive: true });
+  const createdVaultRoot = await mkdir(vaultRoot, { recursive: true });
+  if (createdVaultRoot) {
+    console.warn(
+      `VAULT_ROOT '${vaultRoot}' did not exist; created '${createdVaultRoot}'. If you expected a mounted volume, check your deployment config.`
+    );
+  }
   await migrate(sql);
   await reindexVault(sql, vaultRoot, new Date().toISOString());
 
