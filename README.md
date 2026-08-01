@@ -57,6 +57,13 @@ Run all tests:
 pnpm test
 ```
 
+Run tests in Docker:
+
+```bash
+docker build -t opnnotes .
+docker run --rm opnnotes
+```
+
 Type-check all packages:
 
 ```bash
