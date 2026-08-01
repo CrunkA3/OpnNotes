@@ -25,6 +25,7 @@ RUN corepack enable
 COPY --from=build /app/package.json /app/pnpm-lock.yaml /app/pnpm-workspace.yaml ./
 COPY --from=build /app/packages ./packages
 COPY --from=build /app/node_modules ./node_modules
+RUN pnpm prune --prod
 
 EXPOSE 3000
 CMD ["pnpm", "--filter", "@opnnotes/indexer", "start"]
