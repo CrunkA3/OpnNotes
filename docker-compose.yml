@@ -1,4 +1,16 @@
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://opnnotes:${POSTGRES_PASSWORD:-opnnotes}@postgres:5432/opnnotes
+      NODE_ENV: production
+
   tests:
     build:
       context: .
