@@ -51,10 +51,10 @@ Note body with [[wiki-links]] and #inline-tags.
 pnpm install
 ```
 
-Start PostgreSQL (with pgvector) via Docker Compose:
+Start the full stack (application + PostgreSQL with pgvector) via Docker Compose:
 
 ```bash
-docker compose up -d
+docker compose up --build -d
 ```
 
 Copy the example environment file and set your password:
