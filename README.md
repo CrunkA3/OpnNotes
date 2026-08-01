@@ -51,6 +51,16 @@ Note body with [[wiki-links]] and #inline-tags.
 pnpm install
 ```
 
+Start PostgreSQL (with pgvector) via Docker Compose:
+
+```bash
+docker compose up -d
+```
+
+Connection string:
+
+Set `DATABASE_URL` to your local PostgreSQL connection string (default database/user/password: `opnnotes`).
+
 Run all tests:
 
 ```bash
