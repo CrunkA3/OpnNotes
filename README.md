@@ -51,7 +51,7 @@ Note body with [[wiki-links]] and #inline-tags.
 pnpm install
 ```
 
-Start the full stack (application + PostgreSQL with pgvector) via Docker Compose:
+Start the Docker test stack (tests + PostgreSQL with pgvector) via Docker Compose:
 
 ```bash
 docker compose up --build -d
