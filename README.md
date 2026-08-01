@@ -51,6 +51,25 @@ Note body with [[wiki-links]] and #inline-tags.
 pnpm install
 ```
 
+Start PostgreSQL (with pgvector) via Docker Compose:
+
+```bash
+docker compose up -d
+```
+
+Copy the example environment file and set your password:
+
+```bash
+cp .env.example .env
+# edit .env and set POSTGRES_PASSWORD to a value of your choice
+```
+
+Connection string (update `changeme` to match your `POSTGRES_PASSWORD`):
+
+```
+DATABASE_URL=postgresql://opnnotes:changeme@localhost:5432/opnnotes
+```
+
 Run all tests:
 
 ```bash
