@@ -1,5 +1,5 @@
 services:
-  app:
+  tests:
     build:
       context: .
     restart: unless-stopped
